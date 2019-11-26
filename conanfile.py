@@ -4,7 +4,7 @@ import os, shutil
 
 class JsoncppConan(ConanFile):
     name        = "jsoncpp"
-    version     = "1.9.0"
+    version     = "1.8.3"
     description = "A C++ library for interacting with JSON."
     url         = "https://github.com/theirix/conan-jsoncpp"
     license     = "MIT"
@@ -35,7 +35,7 @@ class JsoncppConan(ConanFile):
             self.options.use_pic = True
 
     def source(self):
-        checksum = "bdd3ba9ed1f110b3eb57474d9094e90ab239b93b4803b4f9b1722c281e85a4ac"
+        checksum = "3671ba6051e0f30849942cc66d1798fdf0362d089343a83f704c09ee7156604f"
         tools.get("https://github.com/open-source-parsers/jsoncpp/archive/%s.tar.gz" % self.version, sha256=checksum)
         os.rename("jsoncpp-%s" % self.version, self._source_subfolder)
         os.rename(os.path.join(self._source_subfolder, "CMakeLists.txt"),
@@ -53,6 +53,8 @@ class JsoncppConan(ConanFile):
         cmake.definitions['JSONCPP_WITH_CMAKE_PACKAGE'] = True
         cmake.definitions['JSONCPP_WITH_TESTS'] = False
         cmake.definitions['BUILD_SHARED_LIBS'] = self.options.shared
+        cmake.definitions['BUILD_STATIC_LIBS'] = not self.options.shared
+        cmake.definitions['CONAN_LIBCXX'] = 'libstdc++11'
         # keep this setting because Conan relies on an option fPIC
         cmake.definitions['CMAKE_POSITION_INDEPENDENT_CODE'] = self.options.use_pic
 
@@ -65,3 +67,4 @@ class JsoncppConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ['jsoncpp']
+
