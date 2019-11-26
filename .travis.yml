@@ -1,11 +1,11 @@
 
 env:
    global:
-     - CONAN_REFERENCE: "jsoncpp/1.9.0"
-     - CONAN_USERNAME: "theirix"
-     - CONAN_LOGIN_USERNAME: "theirix"
+     - CONAN_REFERENCE: "jsoncpp/1.8.3"
+     - CONAN_USERNAME: "trassir-ci-bot"
+     - CONAN_LOGIN_USERNAME: "trassir-ci-bot"
      - CONAN_CHANNEL: "stable"
-     - CONAN_UPLOAD: "https://api.bintray.com/conan/theirix/conan-repo"
+     - CONAN_UPLOAD: "https://api.bintray.com/conan/trassir/conan-public"
      - CONAN_UPLOAD_ONLY_WHEN_STABLE: True
      - CONAN_STABLE_BRANCH_PATTERN: "stable/*"
 
