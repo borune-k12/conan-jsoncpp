@@ -2,7 +2,7 @@
 env:
    global:
      - CONAN_REFERENCE: "jsoncpp/1.8.3"
-     - CONAN_USERNAME: "trassir-ci-bot"
+     - CONAN_USERNAME: "trassir"
      - CONAN_LOGIN_USERNAME: "trassir-ci-bot"
      - CONAN_CHANNEL: "stable"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/trassir/conan-public"
