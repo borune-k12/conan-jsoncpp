@@ -8,9 +8,11 @@ if __name__ == "__main__":
 
     items = []
     for settings, options, env_vars, build_requires, reference in builder.items:
+        settings["compiler.libcxx"] = "libc++" if settings["compiler"] == "apple-clang" else "libstdc++11"
         # skip mingw cross-builds
         if not (platform.system() == "Windows" and settings["compiler"] == "gcc" and settings["arch"] == "x86"):
             items.append([settings, options, env_vars, build_requires, reference])
+
     builder.items = items
 
     builder.run()
